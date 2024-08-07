@@ -3,7 +3,6 @@ from datetime import date, datetime, timedelta
 
 from util.validators import *
 
-
 class AlterarClienteDTO(BaseModel):    
     nome: str
     cpf: str
