@@ -4,12 +4,12 @@ from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 import mercadopago as mp
 import os
 
-from dtos.alterar_cliente_dto import AlterarClienteDTO
+from dtos.alterar_usuario_dto import AlterarClienteDTO
 from dtos.alterar_senha_dto import AlterarSenhaDTO
-from models.cliente_model import Cliente
+from models.usuario_model import Usuario
 from models.item_pedido_model import ItemPedido
 from models.pedido_model import EstadoPedido, Pedido
-from repositories.cliente_repo import ClienteRepo
+from repositories.usuario_repo import UsuarioRepo
 from repositories.item_pedido_repo import ItemPedidoRepo
 from repositories.pedido_repo import PedidoRepo
 from repositories.produto_repo import ProdutoRepo
@@ -22,7 +22,7 @@ from util.cookies import (
 )
 from util.templates import obter_jinja_templates
 
-router = APIRouter(prefix="/pedido")
+router = APIRouter(prefix="/pedido", include_in_schema=False)
 
 @router.get("/pagamento/{id_pedido:int}", response_class=HTMLResponse)
 async def get_pagamento(request: Request, id_pedido: int = Path(...)):
